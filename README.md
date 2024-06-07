@@ -13,7 +13,7 @@ Bare repo to store configuration files.
 
 Use command: 
 ```bash
-curl -Lks (https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686)/config-install.sh | /bin/bash
+curl -Lks https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686/config-install.sh | /bin/bash
 ```
 **Done!**
 
