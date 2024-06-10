@@ -166,7 +166,5 @@ export PATH="$ruby:$rubygems:$PATH:$brewopt:$vscode"
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # GPG
-#
-#if [ -r ~/.zshrc ]; then echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zshrc; \
-#else echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zprofile; fi
+export GPG_TTY=$(tty)
 
