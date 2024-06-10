@@ -13,7 +13,9 @@ Bare repo to store configuration files.
 
 Use command: 
 ```bash
-curl -Lks https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686/config-install.sh | /bin/bash
+curl -Lks https://gist.githubusercontent.com/baquaz/\
+296cb06e075ee9d715dd2058a44fb686/raw/281b7847f14fcda0ee8de6f3e3d90643c5866389\
+/dotfiles-install.sh | /bin/zsh
 ```
 **Done!**
 
