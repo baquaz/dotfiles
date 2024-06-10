@@ -4,18 +4,6 @@ version = 2
 final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
-
-#[[blocks]]
-#  type = 'shell'
-#
-#  [[blocks.segments]]
-#    type = 'text'
-#    style = 'plain'
-#    [blocks.segments.properties]
-#      text = '\n'
-#      prefix = ''
-#      postfix = ''
-
 # 1 Info prompt
 
 [[blocks]]
@@ -92,12 +80,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
       '{{ if gt .Ahead 0 }}p:purple_dark{{ end }}',
       '{{ if gt .Behind 0 }}p:pink_dark{{ end }}'
     ]
-    template = '''
- {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}\
-{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}\
-{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}\
-{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} \
-'''
+    template = ' {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }} {{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
 
     [blocks.segments.properties]
       fetch_status = true
@@ -105,13 +88,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
       fetch_upstream_icon = true
       fetch_worktree_count = true
 
-    [[blocks.segments]]
-      type = 'time'
-      style = 'diamond'
-      foreground = 'p:blueish'
+  [[blocks.segments]]
+    type = 'time'
+    foreground = 'p:blueish'
 
-      [blocks.segments.properties]
-        time_format = '15:04:05 PM'
+    [blocks.segments.properties]
+      time_format = '15:04:05 PM'
 
 # 2 Command prompt
 
