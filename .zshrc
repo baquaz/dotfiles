@@ -1,9 +1,12 @@
+
+# >>P10k
+#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -15,7 +18,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# >>P10k
+#
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -88,6 +94,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# Chruby scripts
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
 # User configuration
 
@@ -115,21 +124,49 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Oh-My-Posh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  initialCommand=""
+  case $ITERM_PROFILE in
+
+    "Config NVIM")
+      initialCommand="| nvim ~/.config/nvim"
+      ;;
+    "Notes NVIM")
+      initialCommand="| nvim notes"
+      ;;
+
+  esac
+
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/myown.toml) $initialCommand"
+  #eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/example.toml)"
+fi
+
 # Alias config
 alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
 
-#export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
+# PATHS
 
-if [ -r ~/.zshrc ]; then echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zshrc; \
-else echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zprofile; fi
+# Visual Studio Code (code)
+vscode="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# Homebrew
+brewopt=$(brew --prefix)/opt
+
+# Ruby
+ruby="$HOME/.rubies/ruby-3.3.2"
+# Ruby Gems
+rubygems="$ruby/bin"
+
+export PATH="$ruby:$rubygems:$PATH:$brewopt:$vscode"
+
+# >>P10k
+#
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export GPG_TTY=$(tty)
+# GPG
+#
+#if [ -r ~/.zshrc ]; then echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zshrc; \
+#else echo -e '\nexport GPG_TTY=$(tty)' >> ~/.zprofile; fi
 
-
-export GPG_TTY=$(tty)
-
-export GPG_TTY=$(tty)
