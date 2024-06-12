@@ -5,11 +5,41 @@ Bare repo to store configuration files.
 # Installation on new machine
 
 #### Prerequisites
-- git available at path: `user/bin/git`
 
-#### Automatic script 
+* `git` command available at path: `user/bin/git`
 
-- installs repo and moves all pre-existing files into `.config-backup` folder
+* [Homebrew](https://brew.sh) the missing package manager for macOS
+
+* Oh-My-Zsh at path: `user/.oh-my-zsh`
+
+* `chruby` and `ruby-install` for maintaining ruby gems
+  and flexible switching between many Ruby versions
+    ```sh
+    brew install chruby ruby-install
+    ```
+    then you can install latest Ruby
+    ```sh
+    ruby-install ruby
+    ```
+* [Nerd Fonts](https://www.nerdfonts.com) - set of dev icons and symbols to display in terminal
+
+    ```sh
+    brew tap homebrew/cask-fonts
+    ```
+    then install the nerd font you'd like
+    ```sh
+    brew install font-meslo-lg-nerd-font
+    ```
+
+* Oh-My-Posh - beautify the prompt and additional status look
+
+  ```sh 
+  brew install jandedobbeleer/oh-my-posh/oh-my-posh
+  ```
+
+### Automatic script 
+
+Installs repo and moves all pre-existing files into `.config-backup` folder
 
 Use command: 
 ```bash
