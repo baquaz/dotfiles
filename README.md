@@ -10,6 +10,10 @@ Bare repo to store configuration files.
 
 * [Homebrew](https://brew.sh) the missing package manager for macOS
 
+* [NeoVim](https://neovim.io) hyperextensible Vim-based text editor
+  ```sh
+  brew install neovim
+  ```
 * [Oh-My-Zsh](https://ohmyz.sh) zsh config framework at path: `user/.oh-my-zsh`
 
 * `chruby` and `ruby-install` for maintaining ruby gems
