@@ -10,7 +10,7 @@ Bare repo to store configuration files.
 
 * [Homebrew](https://brew.sh) the missing package manager for macOS
 
-* Oh-My-Zsh at path: `user/.oh-my-zsh`
+* [Oh-My-Zsh](https://ohmyz.sh) zsh config framework at path: `user/.oh-my-zsh`
 
 * `chruby` and `ruby-install` for maintaining ruby gems
   and flexible switching between many Ruby versions
