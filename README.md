@@ -31,7 +31,7 @@ Bare repo to store configuration files.
     brew install font-meslo-lg-nerd-font
     ```
 
-* Oh-My-Posh - beautify the prompt and additional status look
+* [Oh-My-Posh](https://ohmyposh.dev) - beautify the prompt and additional status look
 
   ```sh 
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
