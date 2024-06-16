@@ -4,7 +4,9 @@ Bare repo to store configuration files.
 
 # Installation on new machine
 
-#### Prerequisites
+### 1. Prerequisites Mac
+
+#### Manual setup
 
 * `git` command available at path: `user/bin/git`
 
@@ -30,22 +32,29 @@ Bare repo to store configuration files.
     ruby-install ruby
     ```
 * [Nerd Fonts](https://www.nerdfonts.com) - set of dev icons and symbols to display in terminal
-
-    ```sh
-    brew tap homebrew/cask-fonts
-    ```
-    then install the nerd font you'd like
     ```sh
     brew install font-meslo-lg-nerd-font
     ```
 
 * [Oh-My-Posh](https://ohmyposh.dev) - beautify the prompt and additional status look
-
   ```sh 
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
   ```
+  
+#### Automatic setup
 
-### Automatic script 
+  - Installs everything listed above using the script.
+
+    Use command:
+    ```bash
+    curl -Lks https://gist.githubusercontent.com/baquaz/\
+    510b8a702c79d00d7c9bf2a297381da1/raw/871e135a7538a2e976214f4aebe22c89b3d4d5b3\
+    /mac-setup-init.sh | /bin/zsh
+    ```
+    
+<br>
+
+### 2. Automatic dotfiles script 
 
 Installs repo and moves all pre-existing files into `.config-backup` folder
 
