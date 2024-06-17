@@ -43,13 +43,13 @@ Bare repo to store configuration files.
   
 #### Automatic setup
 
-  - Installs everything listed above using the script.
+  - Installs everything listed above using the [gist script](https://gist.github.com/baquaz/510b8a702c79d00d7c9bf2a297381da1#file-mac-setup-init-sh).
 
     Use command:
     ```bash
-    curl -Lks https://gist.githubusercontent.com/baquaz/\
-    510b8a702c79d00d7c9bf2a297381da1/raw/871e135a7538a2e976214f4aebe22c89b3d4d5b3\
-    /mac-setup-init.sh | /bin/sh
+    https://gist.githubusercontent.com/baquaz/\
+    510b8a702c79d00d7c9bf2a297381da1/raw/2ed615a1610756ed0fca7cf251300129238b7f7a/\
+    mac-setup-init.sh | bin/sh
     ```
     
 <br>
