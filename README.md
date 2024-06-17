@@ -48,8 +48,8 @@ Bare repo to store configuration files.
     Use command:
     ```bash
     curl -Lks https://gist.githubusercontent.com/baquaz/\
-    510b8a702c79d00d7c9bf2a297381da1/raw/2ed615a1610756ed0fca7cf251300129238b7f7a/\
-    mac-setup-init.sh | bin/sh
+    510b8a702c79d00d7c9bf2a297381da1/raw/2ed615a1610756ed0fca7cf251300129238b7f7a\
+    /mac-setup-init.sh | bin/sh
     ```
     
 <br>
