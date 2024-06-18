@@ -43,7 +43,7 @@ Bare repo to store configuration files.
   
 #### Automatic setup
 
-  - Installs everything listed above using the [gist script](https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686).
+  - Installs everything listed above using the [gist script](https://gist.github.com/baquaz/510b8a702c79d00d7c9bf2a297381da1).
 
     Use command:
     ```bash
