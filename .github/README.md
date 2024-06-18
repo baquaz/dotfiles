@@ -54,15 +54,15 @@ Bare repo to store configuration files.
     
 <br>
 
-### 2. Automatic dotfiles script 
+### 2. Automatic dotfiles [gist script](https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686)
 
 Installs repo and moves all pre-existing files into `.config-backup` folder
 
 Use command: 
 ```bash
 curl -Lks https://gist.githubusercontent.com/baquaz/\
-296cb06e075ee9d715dd2058a44fb686/raw/281b7847f14fcda0ee8de6f3e3d90643c5866389\
-/dotfiles-install.sh | /bin/zsh
+296cb06e075ee9d715dd2058a44fb686/raw/083fd31321aa82d5f076d897fa2d1d1345f843bd/\
+dotfiles-install.sh | /bin/zsh
 ```
 **Done!**
 
