@@ -61,7 +61,7 @@ Installs repo and moves all pre-existing files into `.config-backup` folder
 Use command: 
 ```bash
 curl -Lks https://gist.githubusercontent.com/baquaz/\
-296cb06e075ee9d715dd2058a44fb686/raw/083fd31321aa82d5f076d897fa2d1d1345f843bd/\
+296cb06e075ee9d715dd2058a44fb686/raw/d192f46a933753bd44ca52751d97d1750b8c05f1/\
 dotfiles-install.sh | /bin/zsh
 ```
 **Done!**
