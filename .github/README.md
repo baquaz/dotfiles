@@ -43,13 +43,13 @@ Bare repo to store configuration files.
   
 #### Automatic setup
 
-  - Installs everything listed above using the [gist script](https://gist.github.com/baquaz/510b8a702c79d00d7c9bf2a297381da1#file-mac-setup-init-sh).
+  - Installs everything listed above using the [gist script](https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686).
 
     Use command:
     ```bash
     curl -Lks https://gist.githubusercontent.com/baquaz/\
-    510b8a702c79d00d7c9bf2a297381da1/raw/47f240bb6ebe97d969c053fd9a18c10b950ae7c6/\
-    mac-setup-init.sh | /bin/sh
+    296cb06e075ee9d715dd2058a44fb686/raw/c1cee0a0a83869a403c069b3a44fe51b6ad0bece/\
+    dotfiles-install.sh | /bin/sh
     ```
     
 <br>
