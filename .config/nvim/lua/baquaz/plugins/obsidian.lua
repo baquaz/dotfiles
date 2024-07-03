@@ -27,6 +27,10 @@ return {
         name = "Notes",
         path = "~/notes",
       },
+      {
+        name = "Development",
+        path = "~/Documents/DANE/Development",
+      },
     },
 
     templates = {
