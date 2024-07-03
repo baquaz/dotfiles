@@ -16,6 +16,10 @@ Bare repo to store configuration files.
     ```sh
     brew install neovim
     ```
+* [ripgrep](https://github.com/BurntSushi/ripgrep) - extended live-grep searching in neovim
+    ```sh
+    brew install ripgrep
+    ```
 * [Node](https://nodejs.org/en) - for neogit nvim plugin and any plugin needs javascript
     ```sh
     brew install node
