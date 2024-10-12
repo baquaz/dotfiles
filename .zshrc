@@ -63,6 +63,24 @@ export ZSH="$HOME/.oh-my-zsh"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# History
+HISTSIZE=5000
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=$HISTSIZE
+# erase any duplicates in hist file
+HISTDUP=erase
+# append any commands to history file rather than overriding
+setopt appendhistory
+# share command history across all zsh sessions
+setopt sharehistory
+# start command with space to prevent from saving it in history
+setopt hist_ignore_space
+# ignore duplicates
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -75,8 +93,8 @@ plugins=(
  brew
  macos
  #fastlane
- #zsh-autosuggestions
- #zsh-syntax-highlighting
+ zsh-autosuggestions
+ zsh-syntax-highlighting
  web-search
 )
 
