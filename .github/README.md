@@ -15,17 +15,15 @@ Bare repo to store configuration files.
 * [NeoVim](https://neovim.io) - hyperextensible Vim-based text editor
     ```sh
     brew install neovim
+
+* [Node](https://nodejs.org/en) - for neogit nvim plugin and any plugin using javascript
+    ```sh
+    brew install node
     ```
 * [ripgrep](https://github.com/BurntSushi/ripgrep) - extended live-grep searching in neovim
     ```sh
     brew install ripgrep
     ```
-* [Node](https://nodejs.org/en) - for neogit nvim plugin and any plugin needs javascript
-    ```sh
-    brew install node
-    ```
-* [Oh-My-Zsh](https://ohmyz.sh) - zsh config framework at path: `user/.oh-my-zsh`
-
 * `chruby` and `ruby-install` for maintaining ruby gems
   and flexible switching between many Ruby versions
     ```sh
@@ -37,9 +35,18 @@ Bare repo to store configuration files.
     ```
 * [Nerd Fonts](https://www.nerdfonts.com) - set of dev icons and symbols to display in terminal
     ```sh
-    brew install font-meslo-lg-nerd-font
+    brew install font-meslo-lg-nerd-font --cask
     ```
+* [Oh-My-Zsh](https://ohmyz.sh) - zsh config framework at path: `user/.oh-my-zsh`
 
+* `zsh-autosuggestions` - zsh plugin for command autosuggestions
+    ```sh
+    brew install zsh-autosuggestions
+    ```
+* `zsh-syntax-highlighting` - zsh plugin for highlighting valid/invalid commands
+    ```sh
+    brew install zsh-syntax-highlighting
+    ```
 * [Oh-My-Posh](https://ohmyposh.dev) - beautify the prompt and additional status look
   ```sh 
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
