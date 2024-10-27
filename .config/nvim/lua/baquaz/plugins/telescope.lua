@@ -9,8 +9,8 @@ return {
     "jonarrien/telescope-cmdline.nvim",
   },
 
- keys = {
-   { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
+  keys = {
+    { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
   },
 
   config = function()
@@ -29,17 +29,17 @@ return {
         },
       },
 
-     extensions = {
-       cmdline = {
-         -- ... cmdline plugin settings ...
+      extensions = {
+        cmdline = {
+          -- ... cmdline plugin settings ...
           picker = {
-           layout_config = {
-             width  = 120,
-             height = 25,
+            layout_config = {
+              width  = 120,
+              height = 25,
             }
           },
           mappings = {
-           complete      = '<Tab>',
+            complete      = '<Tab>',
             run_selection = '<C-CR>',
             run_input     = '<CR>',
           },
@@ -58,8 +58,11 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    keymap.set("n", "<leader>f]", "<cmd>bn<CR>", { desc = "go to next file" }) -- go to next file
+    keymap.set("n", "<leader>f[", "<cmd>bp<CR>", { desc = "go to previous file" }) -- go to previous file    
 
     -- How to use:
+
     -- press "ff" (Find Files)
 
     --

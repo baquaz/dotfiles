@@ -49,6 +49,23 @@ return {
 
     new_notes_location = "current_dir",
 
+    ui = {
+      checkboxes = {
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+        ["/"] = { char = "◧", hl_group = "ObsidianDone" },
+        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+        ["!"] = { char = "", hl_group = "ObsidianImportant" },
+      },
+
+      block_ids = { hl_group = "ObsidianBlockID" },
+      hl_groups = {
+        ObsidianDone = { bold = true, fg = "#7ee787" },
+        ObsidianImportant = { bold = true, fg = "#f47067" },
+      },
+    },
+
     wiki_link_func = function(opts)
       if opts.id == nil then
         return string.format("[[%s]]", opts.label)
