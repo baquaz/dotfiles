@@ -75,6 +75,9 @@ curl -Lks https://gist.githubusercontent.com/baquaz/\
 296cb06e075ee9d715dd2058a44fb686/raw/c1cee0a0a83869a403c069b3a44fe51b6ad0bece/\
 dotfiles-install.sh | /bin/zsh
 ```
+
+<script src="https://gist.github.com/baquaz/296cb06e075ee9d715dd2058a44fb686.js"></script>
+
 **Done!**
 
 <br>
