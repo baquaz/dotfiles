@@ -28,6 +28,10 @@ return {
         path = "~/notes",
       },
       {
+        name = "obsidian-lifeos-demo",
+        path = "~/Documents/CODE/obsidian-lifeos-demo",
+      },
+      {
         name = "Development",
         path = "~/Documents/DANE/Development",
       },
