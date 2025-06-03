@@ -6,6 +6,11 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>s", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
+-- Prevent deleting from also copying
+-- keymap.set({ "n", "v" }, "d", "_d", { noremap = true })
+-- keymap.set("n", "dd", '"_dd', { noremap = true })
+keymap.set("n", "'", '"_', { noremap = true })
+
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
@@ -26,9 +31,13 @@ keymap.set("n", "<leader>zz", "<cmd>:ZenMode<CR>", { desc = "Zen Mode toggle" })
 keymap.set("n", "<leader>qq", "<cmd>:qa<CR>", { desc = "Quit all nvim" })
 keymap.set("n", "<leader>qf", "<cmd>:qa!<CR>", { desc = "Quit Force all nvim" })
 
-keymap.set("n", "<C-j>", ":m .+1<CR>==", { desc = "Move line up" })
-keymap.set("n", "<C-k>", ":m .-2<CR>==", { desc = "Move line down" })
+-- keymap.set("n", "<C-j>", ":m .+1<CR>==", { desc = "Move line up" })
+-- keymap.set("n", "<C-k>", ":m .-2<CR>==", { desc = "Move line down" })
+keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "window left" })
+keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "window right" })
+keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "window down" })
+keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "window up" })
 keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line up" })
-keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line down"})
+keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line down" })
 keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
-keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line down"})
+keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line down" })

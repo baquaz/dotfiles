@@ -147,10 +147,14 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   #eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/example.toml)"
 fi
 
+
 # Alias config
 alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
 
 # PATHS
+
+# TMUX custom config path
+export TMUX_CONF=~/.config/tmux/tmux.conf
 
 # Visual Studio Code (code)
 vscode="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -158,12 +162,15 @@ vscode="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # Homebrew
 brewopt=$(brew --prefix)/opt
 
+# SwiftLint
+homebrewbin="$brewopt/homebrew/bin"
+
 # Ruby
 ruby="$HOME/.rubies/ruby-3.3.3"
 # Ruby Gems
 rubygems="$ruby/bin"
 
-export PATH="$ruby:$rubygems:$PATH:$brewopt:$vscode"
+export PATH="$ruby:$rubygems:$homebrewbin:$PATH:$brewopt:$vscode"
 
 # GPG
 export GPG_TTY=$(tty)
