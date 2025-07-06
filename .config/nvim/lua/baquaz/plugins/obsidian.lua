@@ -17,7 +17,9 @@ return {
 		{ "<leader>op", "<cmd>ObsidianOpen<cr>", desc = "Open note in Obsidian app", mode = "n" },
 		{ "<leader>oo", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
 		{ "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
-		{ "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Insert template from a list", mode = "n" },
+		{ "<leader>oi", "<cmd>ObsidianTemplate<cr>", desc = "Insert template from a list", mode = "n" },
+		{ "<leader>od", "<cmd>ObsidianToday<cr>", desc = "Quick Switch", mode = "n" },
+		{ "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Open Tags list", mode = "n" },
 		{ "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
 	},
 
@@ -35,10 +37,17 @@ return {
 
 		templates = {
 			subdir = "templates",
-			created = { { date } },
+			created = {{date}},
 			updated = "",
+      date_format = "%Y-%m-%d %A",
 			tags = "",
 		},
+
+    daily_notes = {
+      folder = "Review/Daily",
+      date_format = "%Y-%m-%d",
+      template = "1721579455-lifeos-daily.md",
+    },
 
 		completion = {
 			nvim_cmp = true,

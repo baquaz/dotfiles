@@ -7,9 +7,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
 
@@ -65,6 +62,31 @@ return {
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
+		})
+
+		vim.api.nvim_create_user_command("ToggleFormatting", function()
+			local bufnr = vim.api.nvim_get_current_buf()
+			-- use buffer variable to track formatting state
+			local flag = vim.b[bufnr].formatting_disabled
+
+			-- Toggle the formatting capability
+			for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = bufnr })) do
+				if flag then
+					client.server_capabilities.documentFormattingProvider = true
+				else
+					client.server_capabilities.documentFormattingProvider = false
+				end
+			end
+
+			-- Flip the buffer-local flag
+			print(
+				"Formatting "
+					.. (vim.b[bufnr].formatting_disabled and "disabled" or "enabled")
+					.. " for buffer "
+					.. bufnr
+			)
+		end, {
+			desc = "Toggle LSP formatting for the current buffer",
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
