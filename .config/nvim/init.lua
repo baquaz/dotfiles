@@ -1,3 +1,2 @@
-require("baquaz.core.options")
-require("baquaz.core.keymaps")
-require("baquaz.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

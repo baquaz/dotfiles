@@ -130,22 +130,27 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Oh-My-Posh
+
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  initialCommand=""
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/myown.toml)"
+
   case $ITERM_PROFILE in
-
     "Config NVIM")
-      initialCommand="| nvim ~/.config/nvim"
+      if [[ -z "$TMUX" && -z "$INSIDE_NVIM_SESSION" ]]; then
+        export INSIDE_NVIM_SESSION=1
+        exec tmux new-session -A -s config-nvim 'nvim ~/.config/nvim'
+      fi
       ;;
+
     "Notes NVIM")
-      initialCommand="| nvim notes"
+      if [[ -z "$TMUX" && -z "$INSIDE_NVIM_SESSION" ]]; then
+        export INSIDE_NVIM_SESSION=1
+        exec tmux new-session -A -s notes-nvim 'nvim ~/notes'
+      fi
       ;;
-
   esac
-
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/myown.toml) $initialCommand"
-  #eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/example.toml)"
 fi
+
 
 
 # Alias config
