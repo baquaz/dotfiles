@@ -212,6 +212,7 @@ return {
       xcbeautify = {},
       marksman = {},
       mdformat = {}, -- need?
+      pylsp = {},
 
       -- clangd = {},
       -- gopls = {},
