@@ -22,7 +22,7 @@ end
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
+  -- lazy = true,
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -100,11 +100,12 @@ return {
       {
         name = "notes",
         -- path = vim.fn.expand("~/notes"),
-        path = "~/notes",
+        -- path = "~/notes",
+        path = vim.fn.resolve(vim.fn.expand("~/notes")),
       },
       {
         name = "obsidian-lifeos-demo",
-        path = "~/Documents/CODE/obsidian-lifeos-demo",
+        path = vim.fn.resolve(vim.fn.expand("~/obsidian-lifeos-demo")),
       },
     },
 
@@ -271,10 +272,11 @@ return {
       post_set_workspace = function(client, workspace) end,
     },
 
-    ui = {
-      enable = false,
-
-      checkboxes = {
+    checkboxes = {
+      -- order controls cycling sequence when toggling checkboxes
+      order = { " ", "x", "/", "?", ">", "~", "!" },
+      -- symbols define how each checkbox looks
+      symbols = {
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
         ["x"] = { char = "", hl_group = "ObsidianDone" },
         ["/"] = { char = "◧", hl_group = "ObsidianDone" },
@@ -283,6 +285,19 @@ return {
         ["~"] = { char = "󰜺", hl_group = "ObsidianTilde" },
         ["!"] = { char = "", hl_group = "ObsidianImportant" },
       },
+    },
+    ui = {
+      enable = false,
+
+      -- checkboxes = {
+      --   [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+      --   ["x"] = { char = "", hl_group = "ObsidianDone" },
+      --   ["/"] = { char = "◧", hl_group = "ObsidianDone" },
+      --   ["?"] = { char = "", hl_group = "ObsidianTodo" },
+      --   [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+      --   ["~"] = { char = "󰜺", hl_group = "ObsidianTilde" },
+      --   ["!"] = { char = "", hl_group = "ObsidianImportant" },
+      -- },
 
       bullets = { char = "", hl_group = "ObsidianBullet" },
       external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
