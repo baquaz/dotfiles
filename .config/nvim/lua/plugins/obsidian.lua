@@ -68,8 +68,9 @@ return {
     { "<leader>od", "<cmd>Obsidian today<cr>", desc = "Quick Switch", mode = "n" },
     { "<leader>ot", "<cmd>Obsidian tags<cr>", desc = "Open Tags list", mode = "n" },
     { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Show location list of backlinks", mode = "n" },
+
     {
-      "<CR>",
+      "<S-Tab>",
       function()
         local util = require("obsidian.util")
         local ok, open = pcall(util.cursor_on_markdown_link)
@@ -83,7 +84,7 @@ return {
       mode = "n",
     },
     {
-      "<CR>",
+      "<S-Tab>",
       ":Obsidian toggle_checkbox<CR>",
       mode = "v",
       desc = "Toggle checkbox (visual mode)",
@@ -277,8 +278,9 @@ return {
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
         ["x"] = { char = "", hl_group = "ObsidianDone" },
         ["/"] = { char = "◧", hl_group = "ObsidianDone" },
+        ["?"] = { char = "", hl_group = "ObsidianTodo" },
         [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+        ["~"] = { char = "󰜺", hl_group = "ObsidianTilde" },
         ["!"] = { char = "", hl_group = "ObsidianImportant" },
       },
 

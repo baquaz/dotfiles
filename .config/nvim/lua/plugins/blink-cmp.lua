@@ -29,8 +29,38 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = "super-tab" },
+    keymap = { -- set to 'none' to disable the 'default' preset
+      preset = "none",
 
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+
+      -- disable a keymap from the preset
+      -- ["<C-e>"] = false, -- or {}
+
+      ["<C-q>"] = { "hide" },
+      ["<C-r>"] = { "accept" },
+
+      -- show with a list of providers
+      ["<C-e>"] = {
+        function(cmp)
+          cmp.show(
+            -- { providers = { "snippets" } }
+          )
+        end,
+      },
+
+      -- control whether the next command will be run when using a function
+      ["<C-n>"] = {
+        function(cmp)
+          if some_condition then
+            return
+          end -- runs the next command
+          return true -- doesn't run the next command
+        end,
+        "select_next",
+      },
+    },
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
@@ -45,7 +75,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "obsidian", "obsidian_new", "obsidian_tags", "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer" },
       per_filetype = {
         markdown = { "obsidian", "obsidian_new", "obsidian_tags" },
       },
