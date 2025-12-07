@@ -135,27 +135,29 @@ return {
 
     -- Frontmatter logic
 
-    note_frontmatter_func = function(note)
-      -- Start from the actual metadata read from the file
-      local out = vim.deepcopy(note.metadata or {})
+    frontmatter = {
+      enabled = true, -- or false if you want to disable frontmatter entirely
+      func = function(note)
+        local out = vim.deepcopy(note.metadata or {})
 
-      -- Ensure ID
-      out.id = note.id
+        -- Ensure ID
+        out.id = note.id
 
-      -- Ensure created timestamp exists
-      if not out.created then
-        out.created = os.date("%Y-%m-%d %H:%M:%S")
-      end
+        -- Ensure created timestamp exists
+        if not out.created then
+          out.created = os.date("%Y-%m-%d %H:%M:%S")
+        end
 
-      -- Always update updated timestamp
-      out.updated = os.date("%Y-%m-%d %H:%M:%S")
+        -- Always update updated timestamp
+        out.updated = os.date("%Y-%m-%d %H:%M:%S")
 
-      -- Ensure aliases and tags exist, but preserve any existing ones
-      out.aliases = out.aliases or note.aliases or {}
-      out.tags = out.tags or note.tags or {}
+        -- Ensure aliases and tags exist, but preserve any existing ones
+        out.aliases = out.aliases or note.aliases or {}
+        out.tags = out.tags or note.tags or {}
 
-      return out
-    end,
+        return out
+      end,
+    },
 
     daily_notes = {
       folder = "Review/Daily",
@@ -173,10 +175,6 @@ return {
 
     -- Either 'wiki' or 'markdown'.
     preferred_link_style = "markdown",
-
-    -- Optional, boolean or a function that takes a filename and returns a boolean.
-    -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-    disable_frontmatter = false,
 
     new_notes_location = "notes_subdir",
 
