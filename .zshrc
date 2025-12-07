@@ -153,7 +153,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
 
 # PATHS
 
-# TMUX custom config path
+# TMUX
+
+alias tmx="~/.config/tmux/scripts/tmux-create.sh"
+
+# custom config path
 export TMUX_CONF=~/.config/tmux/tmux.conf
 
 # Visual Studio Code (code)
