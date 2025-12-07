@@ -111,11 +111,51 @@ return {
 
     templates = {
       folder = "templates",
+      -- Frontmatter settings for new notes
       created = { { date } },
-      updated = "",
+      updated = { { date } },
       date_format = "%Y-%m-%d %A",
-      tags = "",
+      tags = "", -- default empty; can override per template
     },
+
+    note_id_func = function(title)
+      local suffix = ""
+      if title and title ~= "" then
+        -- Sanitize title for filename
+        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      else
+        -- Generate 4 random uppercase letters if no title is given
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
+        end
+      end
+      -- Use timestamp + suffix as ID
+      return tostring(os.time()) .. "-" .. suffix
+    end,
+
+    -- Frontmatter logic
+
+    note_frontmatter_func = function(note)
+      -- Start from the actual metadata read from the file
+      local out = vim.deepcopy(note.metadata or {})
+
+      -- Ensure ID
+      out.id = note.id
+
+      -- Ensure created timestamp exists
+      if not out.created then
+        out.created = os.date("%Y-%m-%d %H:%M:%S")
+      end
+
+      -- Always update updated timestamp
+      out.updated = os.date("%Y-%m-%d %H:%M:%S")
+
+      -- Ensure aliases and tags exist, but preserve any existing ones
+      out.aliases = out.aliases or note.aliases or {}
+      out.tags = out.tags or note.tags or {}
+
+      return out
+    end,
 
     daily_notes = {
       folder = "Review/Daily",
@@ -140,56 +180,56 @@ return {
 
     new_notes_location = "notes_subdir",
 
-    -- Optional, customize how note IDs are generated given an optional title.
-    ---@param title string|?
-    ---@return string
-    note_id_func = function(title)
-      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-      -- In this case a note with the title 'My new note' will be given an ID that looks
-      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'.
-      -- You may have as many periods in the note ID as you'd like—the ".md" will be added automatically
-      local suffix = ""
-      if title ~= nil then
-        -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-      else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
-        for _ = 1, 4 do
-          suffix = suffix .. string.char(math.random(65, 90))
-        end
-      end
-      return tostring(os.time()) .. "-" .. suffix
-    end,
-
-    -- Optional, customize how note file names are generated given the ID, target directory, and title.
-    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
-    ---@return string|obsidian.Path The full path to the new note.
-    note_path_func = function(spec)
-      -- This is equivalent to the default behavior.
-      local path = spec.dir / tostring(spec.id)
-      return path:with_suffix(".md")
-    end,
-
-    -- Optional, alternatively you can customize the frontmatter data.
-    ---@return table
-    note_frontmatter_func = function(note)
-      -- Add the title of the note as an alias.
-      if note.title then
-        note:add_alias(note.title)
-      end
-
-      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
-
-      -- `note.metadata` contains any manually added fields in the frontmatter.
-      -- So here we just make sure those fields are kept in the frontmatter.
-      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-        for k, v in pairs(note.metadata) do
-          out[k] = v
-        end
-      end
-
-      return out
-    end,
+    -- -- Optional, customize how note IDs are generated given an optional title.
+    -- ---@param title string|?
+    -- ---@return string
+    -- note_id_func = function(title)
+    --   -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+    --   -- In this case a note with the title 'My new note' will be given an ID that looks
+    --   -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'.
+    --   -- You may have as many periods in the note ID as you'd like—the ".md" will be added automatically
+    --   local suffix = ""
+    --   if title ~= nil then
+    --     -- If title is given, transform it into valid file name.
+    --     suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+    --     -- else
+    --     --   -- If title is nil, just add 4 random uppercase letters to the suffix.
+    --     --   for _ = 1, 4 do
+    --     --     suffix = suffix .. string.char(math.random(65, 90))
+    --     --   end
+    --   end
+    --   return tostring(os.time()) .. "-" .. suffix
+    -- end,
+    --
+    -- -- Optional, customize how note file names are generated given the ID, target directory, and title.
+    -- ---@param spec { id: string, dir: obsidian.Path, title: string|? }
+    -- ---@return string|obsidian.Path The full path to the new note.
+    -- note_path_func = function(spec)
+    --   -- This is equivalent to the default behavior.
+    --   local path = spec.dir / tostring(spec.id)
+    --   return path:with_suffix(".md")
+    -- end,
+    --
+    -- -- Optional, alternatively you can customize the frontmatter data.
+    -- ---@return table
+    -- note_frontmatter_func = function(note)
+    --   -- Add the title of the note as an alias.
+    --   -- if note.title then
+    --   --   note:add_alias(note.title)
+    --   -- end
+    --
+    --   local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+    --
+    --   -- `note.metadata` contains any manually added fields in the frontmatter.
+    --   -- So here we just make sure those fields are kept in the frontmatter.
+    --   if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+    --     for k, v in pairs(note.metadata) do
+    --       out[k] = v
+    --     end
+    --   end
+    --
+    --   return out
+    -- end,
 
     -- Sets how you follow URLs
     ---@param url string
