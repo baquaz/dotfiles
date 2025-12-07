@@ -6,6 +6,6 @@ windows:
   - main:
       panes:
         - commands:
-            - nvim notes
+            - nvim .
 
 
