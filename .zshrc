@@ -129,24 +129,23 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Oh-My-Posh
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  initialCommand=""
+if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
+
+  # Initialize Oh-My-Posh first (synchronous process)
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/myown.toml)"
+
   case $ITERM_PROFILE in
 
     "Config NVIM")
-      initialCommand="| nvim ~/.config/nvim"
+      cd ~/.config
+      tmux new-session -A -s config "nvim ~/.config"
       ;;
     "Notes NVIM")
-      initialCommand="| nvim notes"
+      tmux new-session -A -s notes "nvim ~/notes"
       ;;
-
   esac
 
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/myown.toml) $initialCommand"
-  #eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/example.toml)"
 fi
-
 
 # Alias config
 alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
@@ -159,6 +158,10 @@ alias tmx="~/.config/tmux/scripts/tmux-create.sh"
 
 # custom config path
 export TMUX_CONF=~/.config/tmux/tmux.conf
+
+# TMUXINATOR
+
+alias mx='tmuxinator'
 
 # Visual Studio Code (code)
 vscode="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

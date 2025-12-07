@@ -1,0 +1,11 @@
+# ~/.tmuxinator/notes.yml
+name: notes
+root: ~
+
+windows:
+  - main:
+      panes:
+        - commands:
+            - nvim notes
+
+

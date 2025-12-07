@@ -1,0 +1,19 @@
+
+# ~/.tmuxinator/algorithm-problem.yml
+name: algorithm-problem
+root: ~/Documents/Code/MyCode/algorithms
+
+windows:
+  - problem:
+      layout: even-horizontal
+      panes:
+        - # left pane
+          commands:
+            - nvim .
+        - # right pane
+  - notes:
+      panes:
+        - commands:
+            - cd ~/notes
+            - nvim .
+

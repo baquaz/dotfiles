@@ -1,0 +1,10 @@
+# ~/.tmuxinator/config.yml
+name: config
+root: ~
+
+windows:
+  - main:
+      panes:
+        - commands:
+            - nvim ~/.config/nvim
+
